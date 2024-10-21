@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./singup_page.css">
+</head>
+<body>
+    <form action="" id="signup-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password" >Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button onclick="signup()">Signup</button>
+    </form>
+<script>
+    function signup(email,password){
+        const emailpattern=/^\s@]+@]+\.[^\s@]+$/;
+        if (!emailpattern.test(email)){
+            alert("Invalid email format.")
+            return;
+
+        }
+        if (password.length<6){
+            alert("Password must be at length 6 characters")
+            return;
+        }
+        const users=JSON.parse(localStorage.getItem('users')) || [];
+        if (users.some(user=>user.email===email)){
+            alert("Email already registeres. Please login.")
+            return;
+        }
+
+
+
+
+
+    }
+</script>
+</body>
+</html>
